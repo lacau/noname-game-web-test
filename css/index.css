@@ -1,0 +1,19 @@
+body {    
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.header {
+	background-color: black;
+	left: 0px;
+	right: 0px;
+	top: 0px;
+	height: 50px;
+}
+
+.title {
+	text-align: center;
+	color: #cccccc;
+	font-size: 18px;
+	padding-top: 10px;
+}
