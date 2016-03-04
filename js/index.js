@@ -17,6 +17,6 @@ jQuery(document).ready(function() {
 		var menuPos = jQuery(element).offset();
 		menu.css({top:menuPos.top + element.height});
 
-		animateMenu(menu);
+		openMenu(menu);
 	}
 });
