@@ -44,3 +44,11 @@ body {
 	color: white;
 	cursor: pointer;
 }
+
+.sub-menu {
+	position: absolute;
+	background-color: black;
+	border-bottom-right-radius: 10px;
+	width: 15%;
+	left: 0px;
+}
