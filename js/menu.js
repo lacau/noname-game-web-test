@@ -35,7 +35,7 @@ function createButtonElement(button, index) {
 	return buttonEl;
 }
 
-function animateMenu(menu) {
+function openMenu(menu) {
 	var _height = menu.height() + 'px';
 
 	menu.css({height: '0px'});

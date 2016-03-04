@@ -1,17 +1,33 @@
 jQuery(document).ready(function() {
 
 	jQuery("#menu-account").click({menuName:'account'}, function(event) {showMenu(event)});
+	jQuery("#menu-hero").click({menuName:'hero'}, function(event) {showMenu(event)});
 	
 	var showMenu = function(event) {
 		switch(event.data.menuName) {
 			case 'account':
 				createAccountMenu(event.target);
+				break;
+			case 'hero':
+				createHeroMenu(event.target);
+				break;
 		}
 	}
 
 	function createAccountMenu(element) {
 		var b1 = createButton('Register', '');
 		var b2 = createButton('Login', '');
+		var menu = createMenu([b1,b2]);
+
+		var menuPos = jQuery(element).offset();
+		menu.css({top:menuPos.top + element.height});
+
+		openMenu(menu);
+	}
+
+	function createHeroMenu(element) {
+		var b1 = createButton('Create', '');
+		var b2 = createButton('List', '');
 		var menu = createMenu([b1,b2]);
 
 		var menuPos = jQuery(element).offset();
