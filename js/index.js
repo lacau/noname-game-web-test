@@ -10,42 +10,13 @@ jQuery(document).ready(function() {
 	}
 
 	function createAccountMenu(element) {
-		var b1 = createButton('', '');
-		var b2 = createButton('', '');
+		var b1 = createButton('Register', '');
+		var b2 = createButton('Login', '');
 		var menu = createMenu([b1,b2]);
 
 		var menuPos = jQuery(element).offset();
 		menu.css({top:menuPos.top + element.height});
 
 		animateMenu(menu);
-	}
-
-	function createButton(_buttonName, _link) {
-		return {
-			buttonName: _buttonName,
-			link: _link
-		};
-	}
-
-	function createMenu(arrayButton) {
-		var menuHeight = 0;
-		arrayButton.forEach(function(el, index) {
-			menuHeight += 40;
-		});
-		menuHeight += 'px';
-
-		var container = jQuery(document.createElement('div'));
-		container.addClass('sub-menu');
-		container.css({height: menuHeight});
-
-		return container;
-	}
-
-	function animateMenu(menu) {
-		var _height = menu.height() + 'px';
-
-		menu.css({height: '0px'});
-		jQuery('body').append(menu);
-		menu.animate({height: _height});
 	}
 });

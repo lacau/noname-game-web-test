@@ -52,3 +52,16 @@ body {
 	width: 15%;
 	left: 0px;
 }
+
+.sub-menu-button {
+	position: absolute;
+	text-indent: 15px;
+	left: 0px;
+	height: 20px;
+	color: gray;
+}
+
+.sub-menu-button:hover {
+	color: white;
+	cursor: pointer;
+}
