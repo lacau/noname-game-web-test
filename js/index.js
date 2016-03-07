@@ -2,8 +2,17 @@ jQuery(document).ready(function() {
 
 	jQuery("#menu-account").click({menuName:'account'}, function(event) {showMenu(event)});
 	jQuery("#menu-hero").click({menuName:'hero'}, function(event) {showMenu(event)});
-	
+
 	var showMenu = function(event) {
+		var menu = document.getElementById('menu-container');
+		if(menu) {
+			closeMenu(jQuery(menu));
+			window.setTimeout(function() { func(event) }, 1000);
+		} else
+			func(event);
+	}
+
+	function func(event) {
 		switch(event.data.menuName) {
 			case 'account':
 				createAccountMenu(event.target);

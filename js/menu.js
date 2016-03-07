@@ -1,3 +1,4 @@
+
 function createButton(_buttonName, _link) {
 	return {
 		buttonName: _buttonName,
@@ -16,6 +17,7 @@ function createMenu(arrayButton) {
 
 	var container = jQuery(document.createElement('div'));
 	container.addClass('sub-menu');
+	container.attr('id', 'menu-container');
 	container.css({height: menuHeight});
 	container.append(buttons);
 
@@ -41,4 +43,9 @@ function openMenu(menu) {
 	menu.css({height: '0px'});
 	jQuery('body').append(menu);
 	menu.animate({height: _height});
+}
+
+function closeMenu(menu) {
+	menu.animate({height: '0px'});
+	setTimeout(function() { menu.remove() }, 1000);
 }
