@@ -46,6 +46,7 @@ function openMenu(menu) {
 }
 
 function closeMenu(menu) {
+	menu.empty();
 	menu.animate({height: '0px'});
 	setTimeout(function() { menu.remove() }, 1000);
 }

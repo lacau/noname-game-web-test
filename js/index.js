@@ -1,4 +1,5 @@
 jQuery(document).ready(function() {
+	var visibleMenu = null;
 
 	jQuery("#menu-account").click({menuName:'account'}, function(event) {showMenu(event)});
 	jQuery("#menu-hero").click({menuName:'hero'}, function(event) {showMenu(event)});
@@ -7,20 +8,24 @@ jQuery(document).ready(function() {
 		var menu = document.getElementById('menu-container');
 		if(menu) {
 			closeMenu(jQuery(menu));
-			window.setTimeout(function() { func(event) }, 1000);
+			window.setTimeout(function() { func(event); }, 1000);
 		} else
 			func(event);
 	}
 
 	function func(event) {
-		switch(event.data.menuName) {
-			case 'account':
-				createAccountMenu(event.target);
-				break;
-			case 'hero':
-				createHeroMenu(event.target);
-				break;
-		}
+		if(visibleMenu != event.data.menuName) {
+			switch(event.data.menuName) {
+				case 'account':
+					createAccountMenu(event.target);
+					break;
+				case 'hero':
+					createHeroMenu(event.target);
+					break;
+			}
+			visibleMenu = event.data.menuName;
+		} else
+			visibleMenu = null;
 	}
 
 	function createAccountMenu(element) {
