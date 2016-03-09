@@ -1,7 +1,36 @@
 .login-container {
+	position: relative;
 	width: 300px;
-	height: 250px;
+	height: 200px;
 	border-radius: 5px;
 	background-color: gray;
 	margin: 100px auto 0px auto;
+	padding-top: 50px;
+}
+
+.login-input {
+	position: relative;
+	background-color: #333333;
+	border: 1px solid black;
+	width: 150px;
+	left: 75px;
+	margin-top: 5px;
+	height: 20px;
+	text-indent: 3px;
+	color: #cccccc;
+}
+
+.login-button {
+	position: relative;
+	top: 30px;
+	left: 20px;
+	width: 50px;
+	background-color: black;
+	color: gray;
+	border: 1px #333333 solid;
+}
+
+.login-button:hover {
+	cursor: pointer;
+	color: white;
 }
