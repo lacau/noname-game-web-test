@@ -1,52 +1,105 @@
 
-function createButton(_buttonName, _link) {
-	return {
-		buttonName: _buttonName,
-		link: _link
-	};
-}
+jQuery(document).ready(function() {
+	var visibleMenu = null;
 
-function createMenu(arrayButton) {
-	var menuHeight = 0;
-	var buttons = [];
-	arrayButton.forEach(function(el, index) {
-		buttons.push(createButtonElement(el, index));
-		menuHeight += 40;
-	});
-	menuHeight += 'px';
+	jQuery("#menu-account").click({menuName:'account'}, function(event) {showMenu(event)});
+	jQuery("#menu-hero").click({menuName:'hero'}, function(event) {showMenu(event)});
 
-	var container = jQuery(document.createElement('div'));
-	container.addClass('sub-menu');
-	container.attr('id', 'menu-container');
-	container.css({height: menuHeight});
-	container.append(buttons);
+	function showMenu(event) {
+		var menu = document.getElementById('menu-container');
+		if(menu) {
+			closeMenu(jQuery(menu));
+			window.setTimeout(function() { func(event); }, 1000);
+		} else
+			func(event);
+	}
 
-	return container;
-}
+	function func(event) {
+		if(visibleMenu != event.data.menuName) {
+			switch(event.data.menuName) {
+				case 'account':
+					createAccountMenu(event.target);
+					break;
+				case 'hero':
+					createHeroMenu(event.target);
+					break;
+			}
+			visibleMenu = event.data.menuName;
+		} else
+			visibleMenu = null;
+	}
 
-function createButtonElement(button, index) {
-	var buttonEl = jQuery(document.createElement('div'));
-	buttonEl.addClass('sub-menu-button');
-	var _top = 10;
-	if(index != 0)
-		_top += (index * 20) + 10;
+	function createAccountMenu(element) {
+		var b1 = createButton('Register', '');
+		var b2 = createButton('Login', '');
+		var menu = createMenu([b1,b2]);
 
-	buttonEl.css({top: _top + 'px'});
-	buttonEl.append(button.buttonName);
+		var menuPos = jQuery(element).offset();
+		menu.css({top:menuPos.top + element.height});
 
-	return buttonEl;
-}
+		openMenu(menu);
+	}
 
-function openMenu(menu) {
-	var _height = menu.height() + 'px';
+	function createHeroMenu(element) {
+		var b1 = createButton('Create', '');
+		var b2 = createButton('List', '');
+		var menu = createMenu([b1,b2]);
 
-	menu.css({height: '0px'});
-	jQuery('body').append(menu);
-	menu.animate({height: _height});
-}
+		var menuPos = jQuery(element).offset();
+		menu.css({top:menuPos.top + element.height});
 
-function closeMenu(menu) {
-	menu.empty();
-	menu.animate({height: '0px'});
-	setTimeout(function() { menu.remove() }, 1000);
-}
+		openMenu(menu);
+	}
+
+	function createButton(_buttonName, _link) {
+		return {
+			buttonName: _buttonName,
+			link: _link
+		};
+	}
+
+	function createMenu(arrayButton) {
+		var menuHeight = 0;
+		var buttons = [];
+		arrayButton.forEach(function(el, index) {
+			buttons.push(createButtonElement(el, index));
+			menuHeight += 40;
+		});
+		menuHeight += 'px';
+
+		var container = jQuery(document.createElement('div'));
+		container.addClass('sub-menu');
+		container.attr('id', 'menu-container');
+		container.css({height: menuHeight});
+		container.append(buttons);
+
+		return container;
+	}
+
+	function createButtonElement(button, index) {
+		var buttonEl = jQuery(document.createElement('div'));
+		buttonEl.addClass('sub-menu-button');
+		var _top = 10;
+		if(index != 0)
+			_top += (index * 20) + 10;
+
+		buttonEl.css({top: _top + 'px'});
+		buttonEl.append(button.buttonName);
+
+		return buttonEl;
+	}
+
+	function openMenu(menu) {
+		var _height = menu.height() + 'px';
+
+		menu.css({height: '0px'});
+		jQuery('body').append(menu);
+		menu.animate({height: _height});
+	}
+
+	function closeMenu(menu, menus) {
+		menu.empty();
+		menu.animate({height: '0px'});
+		setTimeout(function() { menu.remove() }, 1000);
+	}
+});
