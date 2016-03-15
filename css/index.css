@@ -72,12 +72,55 @@ body {
 	top: 0px;
 	left: 0px;
 	background-color: black;
-	opacity: 0.3;
+	opacity: 0.5;
 	z-index: 99;
 }
 
 .error-container {
 	width: 350px;
-	height: 200px;
+	height: 150px;
 	background-color: #555555;
+	border: 1px solid black;
+	z-index: 100;
+}
+
+.error-container-title {
+	position: relative;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 25px;
+	background-color: black;
+	border-bottom: 1px solid black;
+	text-indent: 5px;
+	color: white;
+	vertical-align: middle;
+	line-height: 25px;
+}
+
+.error-container-text {
+	position: relative;
+	width: 330px;
+	color: #cccccc;
+	padding-top: 20px;
+	text-indent: 15px;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+.error-ok-button {
+	position: relative;
+	top: 30px;
+	width: 50px;
+	background-color: black;
+	color: gray;
+	border: 1px #333333 solid;
+	text-align: center;
+	font-size: 13px;
+	margin-left: 150px;
+}
+
+.error-ok-button:hover {
+	cursor: pointer;
+	color: white;
 }
