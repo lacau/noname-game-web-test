@@ -19,8 +19,7 @@ jQuery(document).ready(function() {
 		        console.log(data);
 		    },
 		    error: function(xhr) {
-		    	console.log(xhr);
-		    	//showErrorPopup();
+		    	showErrorPopup(JSON.parse(xhr.responseText).errorMessage);
 		    }
 		});
 

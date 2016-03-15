@@ -22,23 +22,41 @@ function unblockScreen() {
 }
 
 function createErrorDiv(description) {
-	var container = jQuery(document.createElement('div'));
-	container.addClass('error-container');
-	container.attr('id', 'error-container');
-	var titleDiv = jQuery(document.createElement('div'));
-	titleDiv.addClass('error-container-title');
-	var textDiv = jQuery(document.createElement('div'));
-	textDiv.addClass('error-container-text');
-	var button = jQuery(document.createElement('div'));
-	button.addClass('error-ok-button');
-	button.append('OK');
-	button.click(unblockScreen);
-	titleDiv.append('Error');
-	textDiv.append(description);
-	container.append(titleDiv);
-	container.append(textDiv);
-	container.append(button);
+	var container = createErrorContainer();
+	var titleDiv = createErrorTitle();
+	container.append(createErrorTitle());
+	container.append(createErrorDescription(description));
+	container.append(createErrorOkButton());
 	return container;
+}
+
+function createErrorContainer() {
+	var div = jQuery(document.createElement('div'));
+	div.addClass('error-container');
+	div.attr('id', 'error-container');
+	return div;
+}
+
+function createErrorTitle() {
+	var div = jQuery(document.createElement('div'));
+	div.addClass('error-container-title');
+	div.append('Error');
+	return div;
+}
+
+function createErrorDescription(description) {
+	var div = jQuery(document.createElement('div'));
+	div.addClass('error-container-text');
+	div.append(description);
+	return div;
+}
+
+function createErrorOkButton() {
+	var div = jQuery(document.createElement('div'));
+	div.addClass('error-ok-button');
+	div.append('OK');
+	div.click(unblockScreen);
+	return div;
 }
 
 jQuery.fn.center = function () {
