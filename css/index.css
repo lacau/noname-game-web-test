@@ -66,3 +66,18 @@ body {
 	color: white;
 	cursor: pointer;
 }
+
+.block-screen {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	background-color: black;
+	opacity: 0.3;
+	z-index: 99;
+}
+
+.error-container {
+	width: 350px;
+	height: 200px;
+	background-color: #555555;
+}
