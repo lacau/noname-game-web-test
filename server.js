@@ -5,6 +5,7 @@ app.get('/', function(res, res) {
 	res.sendFile(__dirname + '/view/index.html');
 });
 
+app.use('/', express.static(__dirname + '/view'));
 app.use('/js', express.static(__dirname + '/js'));
 app.use('/bower_components', express.static(__dirname + '/bower_components'));
 app.use('/css', express.static(__dirname + '/css'));

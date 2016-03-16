@@ -1,6 +1,7 @@
 body {    
     margin: 0 !important;
     padding: 0 !important;
+    background-color: #eeeeee;
 }
 
 .header {
@@ -123,4 +124,13 @@ body {
 .error-ok-button:hover {
 	cursor: pointer;
 	color: white;
+}
+
+.container-title {
+	position: absolute;
+	left: 15%;
+	top: 80px;
+	text-indent: 10px;
+	font-size: 20px;
+	font-weight: bold;
 }
