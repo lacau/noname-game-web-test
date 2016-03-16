@@ -41,8 +41,8 @@ jQuery(document).ready(function() {
 	}
 
 	function createHeroMenu(element) {
-		var b1 = createButton('Create', '');
-		var b2 = createButton('List', '');
+		var b1 = createButton('Create', 'hero-create');
+		var b2 = createButton('List', 'hero-list');
 		var menu = createMenu([b1,b2]);
 
 		var menuPos = jQuery(element).offset();
