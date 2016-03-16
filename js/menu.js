@@ -30,8 +30,8 @@ jQuery(document).ready(function() {
 	}
 
 	function createAccountMenu(element) {
-		var b1 = createButton('Register', '');
-		var b2 = createButton('Login', 'login.html');
+		var b1 = createButton('Register', 'register-account');
+		var b2 = createButton('Login', 'login');
 		var menu = createMenu([b1,b2]);
 
 		var menuPos = jQuery(element).offset();
@@ -86,7 +86,7 @@ jQuery(document).ready(function() {
 		buttonEl.css({top: _top + 'px'});
 		buttonEl.append(button.buttonName);
 		buttonEl.click(function() {
-			jQuery('#container').load(button.link);
+			jQuery('#container').load(button.link + '.html');
 		});
 
 		return buttonEl;
