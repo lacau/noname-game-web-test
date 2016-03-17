@@ -11,7 +11,7 @@ jQuery(document).ready(function() {
 	});
 
 	function successFunction(data) {
-		console.log(data.id);
-		console.log(data.token);
+		console.log(data);
+		showInfoPopup('Account created!');
 	}
 });

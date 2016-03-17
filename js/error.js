@@ -1,7 +1,15 @@
+function showInfoPopup(text) {
+	showPopup(text, 'INFO');
+}
+
 function showErrorPopup(text) {
+	showPopup(text, 'ERROR');
+}
+
+function showPopup(text, title) {
 	var body = jQuery('body');
 	blockScreen();
-	var errorDiv = createErrorDiv(text);
+	var errorDiv = createPopupDiv(text, title);
 	body.append(errorDiv);
 	errorDiv.center();
 }
@@ -21,10 +29,9 @@ function unblockScreen() {
 	jQuery('#block-screen').remove();
 }
 
-function createErrorDiv(description) {
+function createPopupDiv(description, title) {
 	var container = createErrorContainer();
-	var titleDiv = createErrorTitle();
-	container.append(createErrorTitle());
+	container.append(createTitle(title));
 	container.append(createErrorDescription(description));
 	container.append(createErrorOkButton());
 	return container;
@@ -37,10 +44,10 @@ function createErrorContainer() {
 	return div;
 }
 
-function createErrorTitle() {
+function createTitle(title) {
 	var div = jQuery(document.createElement('div'));
 	div.addClass('error-container-title');
-	div.append('Error');
+	div.append(title);
 	return div;
 }
 
