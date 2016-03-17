@@ -15,7 +15,13 @@ function ajaxPost(path, formData, successFunction) {
 		        successFunction(data);
 		    },
 		    error: function(xhr) {
-		    	showErrorPopup(JSON.parse(xhr.responseText).errorMessage);
+		    	var errorMsg;
+		    	try {
+		    		errorMsg = JSON.parse(xhr.responseText).errorMessage;
+		    	} catch(err) {
+		    		errorMsg = 'Unexpected error';
+		    	}
+		    	showErrorPopup(errorMsg);
 		    }
 		});
 }
