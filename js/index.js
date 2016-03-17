@@ -1,6 +1,8 @@
-function ajaxPost(path, formData, successFunction, credential) {
+var credential = null;
+
+function ajaxPost(path, formData, successFunction) {
 	var _url = "http://localhost:8080/noname-game/rest/" + path;
-	var _headers = createHeaders(credential);
+	var _headers = createHeaders();
 
 	jQuery.ajax({
 		    url: _url,
@@ -18,7 +20,7 @@ function ajaxPost(path, formData, successFunction, credential) {
 		});
 }
 
-function createHeaders(credential) {
+function createHeaders() {
 	var _headers = { "Accept": 'application/json', "Content-Type": 'application/json' };
 	if(credential) {
 		_headers.auth_id = credential.id;
