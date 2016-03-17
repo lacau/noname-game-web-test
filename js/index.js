@@ -1,14 +1,13 @@
-function ajaxPost(path, formData, successFunction) {
-	var url = "http://localhost:8080/noname-game/rest/" + path;
+function ajaxPost(path, formData, successFunction, credential) {
+	var _url = "http://localhost:8080/noname-game/rest/" + path;
+	var _headers = createHeaders(credential);
+
 	jQuery.ajax({
-		    url: url,
+		    url: _url,
 		    crossDomain: true,
 		    type: 'post',
 		    data: JSON.stringify(formData),
-		    headers: {
-		        "Accept": 'application/json',
-		        "Content-Type": 'application/json'
-		    },
+		    headers: _headers,
 		    dataType: 'json',
 		    success: function (data) {
 		        successFunction(data);
@@ -17,4 +16,14 @@ function ajaxPost(path, formData, successFunction) {
 		    	showErrorPopup(JSON.parse(xhr.responseText).errorMessage);
 		    }
 		});
+}
+
+function createHeaders(credential) {
+	var _headers = { "Accept": 'application/json', "Content-Type": 'application/json' };
+	if(credential) {
+		_headers.auth_id = credential.id;
+		_headers.auth_token = credential.token;
+	}
+
+	return _headers;
 }
