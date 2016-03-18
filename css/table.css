@@ -1,0 +1,21 @@
+.table {
+	width: 100%;
+	float: center;
+}
+
+.table-header {
+	width: 70%;
+	height: 20px;
+	margin: 0 auto;
+	background-color: gray;
+	text-align: center;
+	border: 1px solid black;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+}
+
+.table-header-column {
+	height: 20px;
+	display: inline-block;
+	margin: 0px;
+}
