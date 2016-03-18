@@ -12,6 +12,10 @@ jQuery(document).ready(function() {
 
 	function successFunction(data) {
 		console.log(data);
-		showInfoPopup('Account created!');
+		showInfoPopup('Account created!', redirectToLogin);
+	}
+
+	function redirectToLogin() {
+		redirect('login');
 	}
 });

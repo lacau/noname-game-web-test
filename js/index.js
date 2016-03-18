@@ -36,6 +36,10 @@ function createHeaders() {
 	return _headers;
 }
 
+function redirect(pageName) {
+	jQuery('#container').load(pageName + '.html');
+}
+
 jQuery.fn.center = function () {
     this.css("position","absolute");
     this.css("top", Math.max(0, (($(window).height() - $(this).outerHeight()) / 2) + 

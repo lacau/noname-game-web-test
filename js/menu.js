@@ -86,7 +86,7 @@ jQuery(document).ready(function() {
 		buttonEl.css({top: _top + 'px'});
 		buttonEl.append(button.buttonName);
 		buttonEl.click(function() {
-			jQuery('#container').load(button.link + '.html');
+			redirect(button.link);
 		});
 
 		return buttonEl;
