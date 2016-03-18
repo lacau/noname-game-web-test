@@ -1,15 +1,15 @@
-function showInfoPopup(text) {
-	showPopup(text, 'INFO');
+function showInfoPopup(text, callback) {
+	showPopup(text, 'INFO', callback);
 }
 
-function showErrorPopup(text) {
-	showPopup(text, 'ERROR');
+function showErrorPopup(text, callback) {
+	showPopup(text, 'ERROR', callback);
 }
 
-function showPopup(text, title) {
+function showPopup(text, title, callback) {
 	var body = jQuery('body');
 	blockScreen();
-	var errorDiv = createPopupDiv(text, title);
+	var errorDiv = createPopupDiv(text, title, callback);
 	body.append(errorDiv);
 	errorDiv.center();
 }
@@ -29,11 +29,11 @@ function unblockScreen() {
 	jQuery('#block-screen').remove();
 }
 
-function createPopupDiv(description, title) {
+function createPopupDiv(description, title, callback) {
 	var container = createErrorContainer();
 	container.append(createTitle(title));
 	container.append(createErrorDescription(description));
-	container.append(createErrorOkButton());
+	container.append(createOkButton(callback));
 	return container;
 }
 
@@ -58,10 +58,13 @@ function createErrorDescription(description) {
 	return div;
 }
 
-function createErrorOkButton() {
+function createOkButton(callback) {
 	var div = jQuery(document.createElement('div'));
 	div.addClass('error-ok-button');
 	div.append('OK');
-	div.click(unblockScreen);
+	div.click(function() { 
+		unblockScreen();
+		callback();
+	});
 	return div;
 }
