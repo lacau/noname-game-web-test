@@ -14,19 +14,38 @@ function ajaxPost(path, formData, successFunction) {
 		    success: function (data) {
 		        successFunction(data);
 		    },
-		    error: function(xhr) {
-		    	var errorMsg;
-		    	try {
-		    		errorMsg = JSON.parse(xhr.responseText).errorMessage;
-		    	} catch(err) {
-		    		errorMsg = 'Unexpected error';
-		    	}
-		    	if(shouldRedirectToLogin(xhr.status))
-		    		showErrorPopup(errorMsg, redirectToLogin);
-		    	else
-		    		showErrorPopup(errorMsg);
-		    }
+		    error: errorFunction
 		});
+}
+
+function ajaxGet(path, successFunction) {
+	var _url = "http://localhost:8080/noname-game/rest/" + path;
+	var _headers = createHeaders();
+
+	jQuery.ajax({
+		    url: _url,
+		    crossDomain: true,
+		    type: 'get',
+		    headers: _headers,
+		    dataType: 'json',
+		    success: function (data) {
+		        successFunction(data);
+		    },
+		    error: errorFunction
+		});
+}
+
+function errorFunction(xhr) {
+	var errorMsg;
+	try {
+		errorMsg = JSON.parse(xhr.responseText).errorMessage;
+	} catch(err) {
+		errorMsg = 'Unexpected error';
+	}
+	if(shouldRedirectToLogin(xhr.status))
+		showErrorPopup(errorMsg, redirectToLogin);
+	else
+		showErrorPopup(errorMsg);
 }
 
 function shouldRedirectToLogin(status) {

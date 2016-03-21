@@ -3,6 +3,16 @@ jQuery(document).ready(function() {
 	function onload() {
 		var header = createTableHeader();
 		jQuery('#hero-table').append(header);
+		retrieveHeroList()
+	}
+
+	function retrieveHeroList() {
+		var path = "hero/list";
+		ajaxGet(path, successFunction);
+	}
+
+	function successFunction(data) {
+		console.log(data);
 	}
 
 	function createTableHeader() {
