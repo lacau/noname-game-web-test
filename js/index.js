@@ -12,20 +12,17 @@ function ajaxPost(path, formData, successFunction) {
 		    headers: _headers,
 		    dataType: 'json',
 		    success: function (data) {
-		    	console.log(data);
 		        successFunction(data);
 		    },
 		    error: function(xhr) {
-		    	console.log(xhr);
 		    	var errorMsg;
 		    	try {
 		    		errorMsg = JSON.parse(xhr.responseText).errorMessage;
 		    	} catch(err) {
 		    		errorMsg = 'Unexpected error';
 		    	}
-		    	if(shouldRedirectToLogin(xhr.status)) {
+		    	if(shouldRedirectToLogin(xhr.status))
 		    		showErrorPopup(errorMsg, redirectToLogin);
-		    	}
 		    	else
 		    		showErrorPopup(errorMsg);
 		    }

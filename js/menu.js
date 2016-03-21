@@ -1,6 +1,7 @@
 
 jQuery(document).ready(function() {
 	var visibleMenu = null;
+	var MENU_ANIMATE_TIME = 300;
 
 	jQuery("#menu-account").click({menuName:'account'}, function(event) {showMenu(event)});
 	jQuery("#menu-hero").click({menuName:'hero'}, function(event) {showMenu(event)});
@@ -97,12 +98,12 @@ jQuery(document).ready(function() {
 
 		menu.css({height: '0px'});
 		jQuery('body').append(menu);
-		menu.animate({height: _height});
+		menu.animate({height: _height}, MENU_ANIMATE_TIME);
 	}
 
 	function closeMenu(menu, menus) {
 		menu.empty();
-		menu.animate({height: '0px'});
-		setTimeout(function() { menu.remove() }, 1000);
+		menu.animate({height: '0px'}, MENU_ANIMATE_TIME);
+		setTimeout(function() { menu.remove() }, MENU_ANIMATE_TIME);
 	}
 });

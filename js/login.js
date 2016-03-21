@@ -11,7 +11,6 @@ jQuery(document).ready(function() {
 	});
 
 	function successFunction(data) {
-		console.log(data);
 		credential = data;
 		redirect('hero-list');
 	}
