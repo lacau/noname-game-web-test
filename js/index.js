@@ -12,18 +12,32 @@ function ajaxPost(path, formData, successFunction) {
 		    headers: _headers,
 		    dataType: 'json',
 		    success: function (data) {
+		    	console.log(data);
 		        successFunction(data);
 		    },
 		    error: function(xhr) {
+		    	console.log(xhr);
 		    	var errorMsg;
 		    	try {
 		    		errorMsg = JSON.parse(xhr.responseText).errorMessage;
 		    	} catch(err) {
 		    		errorMsg = 'Unexpected error';
 		    	}
-		    	showErrorPopup(errorMsg);
+		    	if(shouldRedirectToLogin(xhr.status)) {
+		    		showErrorPopup(errorMsg, redirectToLogin);
+		    	}
+		    	else
+		    		showErrorPopup(errorMsg);
 		    }
 		});
+}
+
+function shouldRedirectToLogin(status) {
+	return status == 400 || status == 404;
+}
+
+function redirectToLogin() {
+	redirect('login');
 }
 
 function createHeaders() {

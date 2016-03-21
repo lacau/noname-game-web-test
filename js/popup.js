@@ -64,7 +64,8 @@ function createOkButton(callback) {
 	div.append('OK');
 	div.click(function() { 
 		unblockScreen();
-		callback();
+		if(callback)
+			callback();
 	});
 	return div;
 }
