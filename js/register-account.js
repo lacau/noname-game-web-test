@@ -11,7 +11,6 @@ jQuery(document).ready(function() {
 	});
 
 	function successFunction(data) {
-		console.log(data);
 		showInfoPopup('Account created!', redirectToLogin);
 	}
 
