@@ -5,6 +5,7 @@ jQuery(document).ready(function() {
 	}
 
 	function loadHeroStatus() {
+		jQuery('#hero-name').append(selectedHero.name);
 		jQuery('#hero-level').append(selectedHero.level);
 		jQuery('#hero-str').append(selectedHero.str);
 		jQuery('#hero-hp').append(selectedHero.hp);
