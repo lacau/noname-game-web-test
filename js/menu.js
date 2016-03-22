@@ -43,7 +43,8 @@ jQuery(document).ready(function() {
 	function createHeroMenu(element) {
 		var b1 = createButton('Create', 'hero-create');
 		var b2 = createButton('List', 'hero-list');
-		var menu = createMenu([b1,b2]);
+		var b3 = createButton('Hero', 'hero');
+		var menu = createMenu([b1,b2,b3]);
 
 		var menuPos = jQuery(element).offset();
 		menu.css({top:menuPos.top + element.height});
@@ -63,7 +64,7 @@ jQuery(document).ready(function() {
 		var buttons = [];
 		arrayButton.forEach(function(el, index) {
 			buttons.push(createButtonElement(el, index));
-			menuHeight += 40;
+			menuHeight += 35;
 		});
 		menuHeight += 'px';
 
@@ -79,9 +80,7 @@ jQuery(document).ready(function() {
 	function createButtonElement(button, index) {
 		var buttonEl = jQuery(document.createElement('div'));
 		buttonEl.addClass('sub-menu-button');
-		var _top = 10;
-		if(index != 0)
-			_top += (index * 20) + 10;
+		var _top = (index * 25) + 10;
 
 		buttonEl.css({top: _top + 'px'});
 		buttonEl.append(button.buttonName);
