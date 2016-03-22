@@ -11,9 +11,9 @@ jQuery(document).ready(function() {
 		jQuery('#hero-hp').append(selectedHero.hp);
 		jQuery('#hero-dex').append(selectedHero.dex);
 		jQuery('#hero-stamina').append(selectedHero.stamina);
-		jQuery('#hero-patk').append(selectedHero.patk);
+		//jQuery('#hero-patk').append(selectedHero.patk);
 		jQuery('#hero-exp').append(selectedHero.exp);
-		jQuery('#hero-pdef').append(selectedHero.pdef);
+		//jQuery('#hero-pdef').append(selectedHero.pdef);
 	}
 
 	onload();
