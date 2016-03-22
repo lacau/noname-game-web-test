@@ -10,14 +10,20 @@
 .hero-status-container {
 	position: relative;
 	width: 25%;
-	height: 100px;
+	height: 110px;
 	margin: 30px auto 0px auto;
 	text-align: center;
+	background-color: #cccccc;
+	border: 1px solid #888888;
+	vertical-align: middle;
+	border-radius: 5px;
+	font-weight: bold;
 }
 
 .hero-status-left {
 	position: relative;
 	width: 25%;
+	height: 25px;
 	float: left;
 	border: 0px;
 	text-align: left;
@@ -26,6 +32,7 @@
 .hero-status-right {
 	position: relative;
 	width: 25%;
+	height: 20px;
 	float: left;
 	border: 0px;
 	text-align: right;
