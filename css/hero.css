@@ -6,3 +6,30 @@
 	font-weight: bold;
 	text-align: center;
 }
+
+.hero-status-container {
+	position: relative;
+	width: 25%;
+	height: 100px;
+	margin: 30px auto 0px auto;
+	text-align: center;
+	background-color: gray;
+}
+
+.hero-status-left {
+	position: relative;
+	width: 25%;
+	float: left;
+	border: 0px;
+	background-color: green;
+	text-align: left;
+}
+
+.hero-status-right {
+	position: relative;
+	width: 25%;
+	float: left;
+	border: 0px;
+	background-color: green;
+	text-align: right;
+}
