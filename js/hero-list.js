@@ -23,22 +23,22 @@ jQuery(document).ready(function() {
 		var columns = [hero.name, hero.level, '&nbsp;'];
 		var columnsLength = [40, 40, 20];
 
-		return createTableColumns(columns, columnsLength, 'table-line-column', false);
+		return createTableColumns(columns, columnsLength, false);
 	}
 
 	function createTableHeader() {
 		var columns = ['Name', 'Level', 'Action'];
 		var columnsLength = [40, 40, 20];
 
-		return createTableColumns(columns, columnsLength, 'table-header-column', true);
+		return createTableColumns(columns, columnsLength, true);
 	}
 
-	function createTableColumns(columns, columnsLength, cssClass, isHeader) {
+	function createTableColumns(columns, columnsLength, isHeader) {
 		var lineDiv = jQuery(document.createElement('div'));
 		var divs = [];
 		columns.forEach(function(el, index) {
 			var d = jQuery(document.createElement('div'));
-			d.addClass(cssClass);
+			d.addClass(isHeader ? 'table-header-column' : 'table-line-column');
 			d.css({width: columnsLength[index] + '%'});
 			d.append(el);
 			divs.push(d);
