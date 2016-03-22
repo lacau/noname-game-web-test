@@ -1,4 +1,5 @@
 var credential = null;
+var selectedHero = null;
 
 function ajaxPost(path, formData, successFunction) {
 	var _url = "http://localhost:8080/noname-game/rest/" + path;

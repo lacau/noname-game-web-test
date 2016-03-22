@@ -46,7 +46,8 @@ jQuery(document).ready(function() {
 	}
 
 	function successSelectHero(data) {
-		console.log(data);
+		selectedHero = data;
+		redirect('hero');
 	}
 
 	function createTableColumns(columns, columnsLength, lineIndex, isHeader) {
