@@ -1,4 +1,3 @@
-
 jQuery(document).ready(function() {
 	var visibleMenu = null;
 	var MENU_ANIMATE_TIME = 300;
