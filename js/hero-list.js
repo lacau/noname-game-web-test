@@ -14,32 +14,34 @@ jQuery(document).ready(function() {
 	function successFunction(data) {
 		var lines = [];
 		data.forEach(function(el, index) {
-			lines.push(createTableLine(el));
+			lines.push(createTableLine(el, index));
 		});
 		jQuery('#hero-table').append(lines);
 	}
 
-	function createTableLine(hero) {
+	function createTableLine(hero, index) {
 		var columns = [hero.name, hero.level, '&nbsp;'];
 		var columnsLength = [40, 40, 20];
 
-		return createTableColumns(columns, columnsLength, false);
+		return createTableColumns(columns, columnsLength, index, false);
 	}
 
 	function createTableHeader() {
 		var columns = ['Name', 'Level', 'Action'];
 		var columnsLength = [40, 40, 20];
 
-		return createTableColumns(columns, columnsLength, true);
+		return createTableColumns(columns, columnsLength, null, true);
 	}
 
-	function createTableColumns(columns, columnsLength, isHeader) {
+	function createTableColumns(columns, columnsLength, lineIndex, isHeader) {
 		var lineDiv = jQuery(document.createElement('div'));
+		lineDiv.attr('id', isHeader ? 'table-header' : ('table-line-' + lineIndex));
 		var divs = [];
 		columns.forEach(function(el, index) {
 			var d = jQuery(document.createElement('div'));
 			d.addClass(isHeader ? 'table-header-column' : 'table-line-column');
 			d.css({width: columnsLength[index] + '%'});
+			d.attr('id', (isHeader ? 'table-header-column-' : 'table-line-column-') + index);
 			d.append(el);
 			divs.push(d);
 		});
