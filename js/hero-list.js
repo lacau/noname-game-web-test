@@ -8,13 +8,14 @@ jQuery(document).ready(function() {
 
 	function retrieveHeroList() {
 		var path = "hero/list";
-		ajaxGet(path, successFunction);
+		ajaxGet(path, successRetrieveHeroList);
 	}
 
-	function successFunction(data) {
+	function successRetrieveHeroList(data) {
 		var lines = [];
 		data.forEach(function(el, index) {
 			lines.push(createTableLine(el, index));
+			jQuery(lines[index].children()[2]).append(createSelectButton(el.id));
 		});
 		jQuery('#hero-table').append(lines);
 	}
@@ -31,6 +32,21 @@ jQuery(document).ready(function() {
 		var columnsLength = [40, 40, 20];
 
 		return createTableColumns(columns, columnsLength, null, true);
+	}
+
+	function createSelectButton(id) {
+		var path = "hero/" + id;
+		var button = jQuery(document.createElement('div'));
+		button.addClass('button-select');
+		button.append('Select');
+		button.click(function(event) {
+			ajaxGet(path, successSelectHero);
+		});
+		return button;
+	}
+
+	function successSelectHero(data) {
+		console.log(data);
 	}
 
 	function createTableColumns(columns, columnsLength, lineIndex, isHeader) {
