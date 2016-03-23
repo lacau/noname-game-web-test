@@ -37,3 +37,29 @@
 	border: 0px;
 	text-align: right;
 }
+
+.hero-skill-line {
+	position: relative;
+	width: 300px;
+	margin: 0px auto 0px auto;
+	text-align: center;
+}
+
+.hero-skill-container {
+	position: relative;
+	width: 50px;
+	height: 45px;
+	border: 1px solid black;
+	border-radius: 5px;
+	margin: 2px;
+	display: inline-block;
+}
+
+.hero-skills-title {
+	position: relative;
+	width: 150px;
+	margin: 10px auto 0px auto;
+	font-size: 14px;
+	font-weight: bold;
+	text-align: center;
+}
