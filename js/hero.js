@@ -21,9 +21,9 @@ jQuery(document).ready(function() {
 	}
 
 	function fillExpBar() {
-		var percent = calculateXpPercent(selectedHero);
-		jQuery('#hero-exp-bar').css({width: percent + '%'});
-		jQuery('#hero-exp-text').append(percent + '%');
+		var percent = calculateXpPercent(selectedHero) + '%';
+		jQuery('#hero-exp-bar').css({width: percent});
+		jQuery('#hero-exp-text').append(percent);
 	}
 
 	function onclickSkillContainer(event) {
