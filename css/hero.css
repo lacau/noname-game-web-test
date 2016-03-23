@@ -11,7 +11,7 @@
 	position: relative;
 	width: 25%;
 	height: 110px;
-	margin: 10px auto 0px auto;
+	margin: 5px auto 0px auto;
 	text-align: center;
 	background-color: #cccccc;
 	border: 1px solid #888888;
@@ -70,4 +70,31 @@
 	font-size: 14px;
 	font-weight: bold;
 	text-align: center;
+}
+
+.hero-exp-container {
+	position: relative;
+	width: 25%;
+	height: 15px;
+	margin: 10px auto 0px auto;
+	border: 1px solid #888888;
+	text-align: center;
+}
+
+.hero-exp-bar {
+	position: absolute;
+	height: 15px;
+	border: 0px;
+	margin: 0px;
+	background-color: #555555;
+}
+
+.hero-exp-text {
+	position: relative;
+	width: 10%;
+	height: 15px;
+	margin: 0px auto 0px auto;
+	border: 0px;
+	font-size: 12px;
+	font-weight: bold;
 }

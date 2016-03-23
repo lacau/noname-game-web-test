@@ -4,6 +4,7 @@ jQuery(document).ready(function() {
 
 	function onload() {
 		loadHeroStatus();
+		fillExpBar();
 	}
 
 	function loadHeroStatus() {
@@ -17,6 +18,12 @@ jQuery(document).ready(function() {
 
 		jQuery('#hero-patk').append(calculatePAtk(selectedHero));
 		jQuery('#hero-pdef').append(calculatePDef(selectedHero));
+	}
+
+	function fillExpBar() {
+		var percent = calculateXpPercent(selectedHero);
+		jQuery('#hero-exp-bar').css({width: percent + '%'});
+		jQuery('#hero-exp-text').append(percent + '%');
 	}
 
 	function onclickSkillContainer(event) {
@@ -35,6 +42,22 @@ jQuery(document).ready(function() {
 		var val = str * str + lvl * lvl + 10 * (lvl / 1.5);
 		return parseFloat(val).toFixed(2);
 	}
+
+	function requiredXpToLvlUp(lvl) {
+        return (500.0 * (lvl * lvl / 2.0 * (lvl / 100.0)) * 10.0 + (lvl * lvl * lvl) * 100.0) | 0;
+    }
+
+    function calculateXpPercent(hero) {
+        var percent = 0.0;
+
+        var lastLvlXp = requiredXpToLvlUp(hero.level - 1);
+        var lvlRequiredXp = requiredXpToLvlUp(hero.level) - lastLvlXp;
+        var currentLvlXp = hero.exp - lastLvlXp;
+
+        percent = (currentLvlXp * 100) / lvlRequiredXp;
+
+        return parseFloat(Math.floor(percent * 100) / 100).toFixed(1);
+    }
 
 	onload();
 });
