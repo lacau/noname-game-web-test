@@ -13,14 +13,27 @@ jQuery(document).ready(function() {
 		jQuery('#hero-hp').append(selectedHero.hp);
 		jQuery('#hero-dex').append(selectedHero.dex);
 		jQuery('#hero-stamina').append(selectedHero.stamina);
-		//jQuery('#hero-patk').append(selectedHero.patk);
 		jQuery('#hero-exp').append(selectedHero.exp);
-		//jQuery('#hero-pdef').append(selectedHero.pdef);
+
+		jQuery('#hero-patk').append(calculatePAtk(selectedHero));
+		jQuery('#hero-pdef').append(calculatePDef(selectedHero));
 	}
 
 	function onclickSkillContainer(event) {
 		var container = jQuery(event.target);
 		console.log(event);
+	}
+
+	function calculatePAtk(hero) {
+		var val = hero.str * 5 * (hero.level / 5.2);
+		return parseFloat(val).toFixed(2);
+	}
+
+	function calculatePDef(hero) {
+		var str = hero.str;
+		var lvl = hero.level;
+		var val = str * str + lvl * lvl + 10 * (lvl / 1.5);
+		return parseFloat(val).toFixed(2);
 	}
 
 	onload();
