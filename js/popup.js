@@ -25,7 +25,6 @@ function blockScreen() {
 }
 
 function unblockScreen() {
-	jQuery('#error-container').remove();
 	jQuery('#block-screen').remove();
 }
 
@@ -62,7 +61,8 @@ function createOkButton(callback) {
 	var div = jQuery(document.createElement('div'));
 	div.addClass('error-ok-button');
 	div.append('OK');
-	div.click(function() { 
+	div.click(function() {
+		jQuery('#error-container').remove();
 		unblockScreen();
 		if(callback)
 			callback();
