@@ -49,10 +49,16 @@
 	position: relative;
 	width: 50px;
 	height: 45px;
+	line-height: 45px;
 	border: 1px solid black;
 	border-radius: 5px;
 	margin: 2px;
 	display: inline-block;
+}
+
+.hero-skill-container:hover {
+	cursor: pointer;
+	background-color: #cccccc;
 }
 
 .hero-skills-title {

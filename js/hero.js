@@ -1,5 +1,7 @@
 jQuery(document).ready(function() {
 
+	jQuery('.hero-skill-container').click(onclickSkillContainer);
+
 	function onload() {
 		loadHeroStatus();
 	}
@@ -14,6 +16,11 @@ jQuery(document).ready(function() {
 		//jQuery('#hero-patk').append(selectedHero.patk);
 		jQuery('#hero-exp').append(selectedHero.exp);
 		//jQuery('#hero-pdef').append(selectedHero.pdef);
+	}
+
+	function onclickSkillContainer(event) {
+		var container = jQuery(event.target);
+		console.log(event);
 	}
 
 	onload();
