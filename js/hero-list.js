@@ -15,7 +15,7 @@ jQuery(document).ready(function() {
 		var lines = [];
 		data.forEach(function(el, index) {
 			lines.push(createTableLine(el, index));
-			jQuery(lines[index].children()[2]).append(createSelectButton(el.id));
+			jQuery(lines[index].children()[2]).html(createSelectButton(el.id));
 		});
 		jQuery('#hero-table').append(lines);
 	}
