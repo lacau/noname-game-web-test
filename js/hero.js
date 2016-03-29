@@ -1,10 +1,13 @@
 jQuery(document).ready(function() {
 
+	var skills = null;
+
 	jQuery('.hero-skill-container').click(onclickSkillContainer);
 
 	function onload() {
 		loadHeroStatus();
 		fillExpBar();
+		loadListSkills();
 	}
 
 	function loadHeroStatus() {
@@ -26,18 +29,31 @@ jQuery(document).ready(function() {
 		jQuery('#hero-exp-text').append(percent);
 	}
 
+	function loadListSkills() {
+		var path = "skill/list";
+		ajaxGet(path, loadListSkillsSuccess);
+	}
+
+	function loadListSkillsSuccess(data) {
+		skills = data;
+	}
+
 	function onclickSkillContainer(event) {
-		var container = createSkillSelectList();
-		blockScreen();
-		jQuery('body').append(container);
-		container.center();
+		if(skills != null) {
+			var container = createSkillSelectList();
+			blockScreen();
+			jQuery('body').append(container);
+			container.center();
+		}
 	}
 
 	function createSkillSelectList() {
 		var container = jQuery(document.createElement('div'));
 		container.addClass('list-skill-container');
 		container.append(createSkillSelectListTitle());
-		container.append(createSkillLine(1));
+		skills.forEach(function(el, index) {
+			container.append(createSkillLine(index));
+		});
 
 		return container;
 	}
@@ -70,7 +86,7 @@ jQuery(document).ready(function() {
 	function createDivSkillName(index) {
 		var div = jQuery(document.createElement('div'));
 		div.addClass('list-skill-name-div');
-		div.append('Test name.');
+		div.append(skills[index].name);
 		return div;
 	}
 
