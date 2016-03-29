@@ -27,8 +27,51 @@ jQuery(document).ready(function() {
 	}
 
 	function onclickSkillContainer(event) {
-		var container = jQuery(event.target);
-		console.log(event);
+		var container = createSkillSelectList();
+		blockScreen();
+		jQuery('body').append(container);
+		container.center();
+	}
+
+	function createSkillSelectList() {
+		var container = jQuery(document.createElement('div'));
+		container.addClass('list-skill-container');
+		container.append(createSkillSelectListTitle());
+		container.append(createSkillLine(1));
+
+		return container;
+	}
+
+	function createSkillSelectListTitle() {
+		var titleDiv = jQuery(document.createElement('div'));
+		titleDiv.addClass('list-skill-container-title');
+		titleDiv.append('Skills');
+		return titleDiv;
+	}
+
+	function createSkillLine(index) {
+		var lineDiv = jQuery(document.createElement('div'));
+		lineDiv.addClass('list-skill-line');
+		lineDiv.append(createDivCheckBox(index));
+		lineDiv.append(createDivSkillName(index));
+
+		return lineDiv;
+	}
+
+	function createDivCheckBox(index) {
+		var div = jQuery(document.createElement('div'));
+		div.addClass('list-skill-checkbox-div');
+		var checkbox = jQuery(document.createElement('input'));
+		checkbox.attr('type', 'checkbox');
+		div.append(checkbox);
+		return div;
+	}
+
+	function createDivSkillName(index) {
+		var div = jQuery(document.createElement('div'));
+		div.addClass('list-skill-name-div');
+		div.append('Test name.');
+		return div;
 	}
 
 	onload();
