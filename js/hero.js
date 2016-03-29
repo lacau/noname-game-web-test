@@ -78,7 +78,8 @@ jQuery(document).ready(function() {
 		var div = jQuery(document.createElement('div'));
 		div.addClass('list-skill-checkbox-div');
 		var checkbox = jQuery(document.createElement('input'));
-		checkbox.attr('type', 'checkbox');
+		checkbox.attr('type', 'radio');
+		checkbox.attr('name', 'skill-radio');
 		div.append(checkbox);
 		return div;
 	}
