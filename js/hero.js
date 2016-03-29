@@ -54,6 +54,7 @@ jQuery(document).ready(function() {
 		skills.forEach(function(el, index) {
 			container.append(createSkillLine(index));
 		});
+		container.append(createDivFooter());
 
 		return container;
 	}
@@ -68,19 +69,19 @@ jQuery(document).ready(function() {
 	function createSkillLine(index) {
 		var lineDiv = jQuery(document.createElement('div'));
 		lineDiv.addClass('list-skill-line');
-		lineDiv.append(createDivCheckBox(index));
+		lineDiv.append(createDivRadio(index));
 		lineDiv.append(createDivSkillName(index));
 
 		return lineDiv;
 	}
 
-	function createDivCheckBox(index) {
+	function createDivRadio(index) {
 		var div = jQuery(document.createElement('div'));
 		div.addClass('list-skill-checkbox-div');
-		var checkbox = jQuery(document.createElement('input'));
-		checkbox.attr('type', 'radio');
-		checkbox.attr('name', 'skill-radio');
-		div.append(checkbox);
+		var radio = jQuery(document.createElement('input'));
+		radio.attr('type', 'radio');
+		radio.attr('name', 'skill-radio');
+		div.append(radio);
 		return div;
 	}
 
@@ -88,6 +89,16 @@ jQuery(document).ready(function() {
 		var div = jQuery(document.createElement('div'));
 		div.addClass('list-skill-name-div');
 		div.append(skills[index].name);
+		return div;
+	}
+
+	function createDivFooter() {
+		var div = jQuery(document.createElement('div'));
+		div.addClass('list-skill-container-footer');
+		var selectButton = jQuery(document.createElement('div'));
+		selectButton.addClass('skill-select-button');
+		selectButton.append('Select');
+		div.append(selectButton);
 		return div;
 	}
 
