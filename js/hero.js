@@ -37,6 +37,7 @@ jQuery(document).ready(function() {
 
 	function loadListSkillsSuccess(data) {
 		skills = data;
+		console.log(skills);
 	}
 
 	function onclickSkillContainer(event) {
@@ -127,7 +128,6 @@ jQuery(document).ready(function() {
 	function getSkillByType(type) {
 		var skill;
 		skills.forEach(function(el) {
-			console.log(el.type);
 			if(el.type == type) {
 				skill = el;
 				return;
