@@ -84,6 +84,7 @@ jQuery(document).ready(function() {
 		var radio = jQuery(document.createElement('input'));
 		radio.attr('type', 'radio');
 		radio.attr('name', 'skill-radio');
+		radio.attr('value', skills[index].type);
 		div.append(radio);
 		return div;
 	}
@@ -115,7 +116,9 @@ jQuery(document).ready(function() {
 	}
 
 	function selectSkill() {
+		var selectedVal = jQuery('input[name=skill-radio]:checked', '#list-skill-container').val();
 		skillContainer.empty();
+		skillContainer.append(selectedVal);
 	}
 
 	onload();
