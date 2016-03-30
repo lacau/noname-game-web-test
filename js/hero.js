@@ -1,6 +1,7 @@
 jQuery(document).ready(function() {
 
 	var skills = null;
+	var skillContainer = null;
 
 	jQuery('.hero-skill-container').click(onclickSkillContainer);
 
@@ -40,6 +41,7 @@ jQuery(document).ready(function() {
 
 	function onclickSkillContainer(event) {
 		if(skills != null) {
+			skillContainer = jQuery(event.target);
 			var container = createSkillSelectList();
 			blockScreen();
 			jQuery('body').append(container);
@@ -49,6 +51,7 @@ jQuery(document).ready(function() {
 
 	function createSkillSelectList() {
 		var container = jQuery(document.createElement('div'));
+		container.attr('id', 'list-skill-container');
 		container.addClass('list-skill-container');
 		container.append(createSkillSelectListTitle());
 		skills.forEach(function(el, index) {
@@ -95,11 +98,24 @@ jQuery(document).ready(function() {
 	function createDivFooter() {
 		var div = jQuery(document.createElement('div'));
 		div.addClass('list-skill-container-footer');
+		div.append(createSelectSkillButton());
+		return div;
+	}
+
+	function createSelectSkillButton() {
 		var selectButton = jQuery(document.createElement('div'));
 		selectButton.addClass('skill-select-button');
 		selectButton.append('Select');
-		div.append(selectButton);
-		return div;
+		selectButton.click(function() {
+			selectSkill();
+			jQuery('#list-skill-container').remove();
+			unblockScreen();
+		});
+		return selectButton;
+	}
+
+	function selectSkill() {
+		skillContainer.empty();
 	}
 
 	onload();
