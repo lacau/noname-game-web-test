@@ -57,6 +57,9 @@
 	margin: 2px;
 	display: inline-block;
 	font-size: 6px;
+	background-size: 95% 95%;
+    background-repeat: no-repeat;
+    background-position: center center;
 }
 
 .hero-skill-container:hover {

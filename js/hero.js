@@ -74,6 +74,7 @@ jQuery(document).ready(function() {
 		lineDiv.addClass('list-skill-line');
 		lineDiv.append(createDivRadio(index));
 		lineDiv.append(createDivSkillName(index));
+		lineDiv.attr('title', skills[index].description);
 
 		return lineDiv;
 	}
@@ -118,7 +119,21 @@ jQuery(document).ready(function() {
 	function selectSkill() {
 		var selectedVal = jQuery('input[name=skill-radio]:checked', '#list-skill-container').val();
 		skillContainer.empty();
-		skillContainer.append(selectedVal);
+		skillContainer.css('background-image', 'url(img/' + selectedVal.toLowerCase() + '.png)');
+		skillContainer.append('&nbsp;');
+		skillContainer.attr('title', getSkillByType(selectedVal).name);
+	}
+
+	function getSkillByType(type) {
+		var skill;
+		skills.forEach(function(el) {
+			console.log(el.type);
+			if(el.type == type) {
+				skill = el;
+				return;
+			}
+		});
+		return skill;
 	}
 
 	onload();
