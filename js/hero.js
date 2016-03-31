@@ -34,6 +34,11 @@ jQuery(document).ready(function() {
 	function loadHeroSkills() {
 		if(selectedHero.skills.length == 0)
 			return;
+
+		selectedHero.skills.forEach(function(el, index) {
+			var container = jQuery('#hero-skill-container-' + (index + 1));
+			setSkillToContainer(container, el.type);
+		});
 	}
 
 	function loadListSkills() {
