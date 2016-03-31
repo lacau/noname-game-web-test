@@ -8,6 +8,7 @@ jQuery(document).ready(function() {
 	function onload() {
 		loadHeroStatus();
 		fillExpBar();
+		loadHeroSkills();
 		loadListSkills();
 	}
 
@@ -28,6 +29,11 @@ jQuery(document).ready(function() {
 		var percent = calculateXpPercent(selectedHero) + '%';
 		jQuery('#hero-exp-bar').css({width: percent});
 		jQuery('#hero-exp-text').append(percent);
+	}
+
+	function loadHeroSkills() {
+		if(selectedHero.skills.length == 0)
+			return;
 	}
 
 	function loadListSkills() {
@@ -118,11 +124,15 @@ jQuery(document).ready(function() {
 	}
 
 	function selectSkill() {
-		var selectedVal = jQuery('input[name=skill-radio]:checked', '#list-skill-container').val();
-		skillContainer.empty();
-		skillContainer.css('background-image', 'url(img/' + selectedVal.toLowerCase() + '.png)');
-		skillContainer.append('&nbsp;');
-		skillContainer.attr('title', getSkillByType(selectedVal).name);
+		var skillType = jQuery('input[name=skill-radio]:checked', '#list-skill-container').val();
+		setSkillToContainer(skillContainer, skillType);
+	}
+
+	function setSkillToContainer(container, skillType) {
+		container.empty();
+		container.css('background-image', 'url(img/' + skillType.toLowerCase() + '.png)');
+		container.append('&nbsp;');
+		container.attr('title', getSkillByType(skillType).name);
 	}
 
 	function getSkillByType(type) {
