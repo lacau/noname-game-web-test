@@ -132,7 +132,12 @@ jQuery(document).ready(function() {
 
 	function selectSkill() {
 		var skillType = jQuery('input[name=skill-radio]:checked', '#list-skill-container').val();
-		setSkillToContainer(skillContainer, skillType);
+		if(skillType) {
+			var id = skillContainer.attr('id');
+			id = id.substring(id.length - 1, id.length);
+			selectedHero.skills[id-1] = getSkillByType(skills, skillType);
+			setSkillToContainer(skillContainer, skillType);
+		}
 	}
 
 	function setSkillToContainer(container, skillType) {
