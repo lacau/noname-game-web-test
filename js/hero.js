@@ -98,6 +98,8 @@ jQuery(document).ready(function() {
 		radio.attr('type', 'radio');
 		radio.attr('name', 'skill-radio');
 		radio.attr('value', skills[index].type);
+		if(getSkillByType(selectedHero.skills, skills[index].type) != null)
+			radio.attr('disabled', true);
 		div.append(radio);
 		return div;
 	}
@@ -137,12 +139,12 @@ jQuery(document).ready(function() {
 		container.empty();
 		container.css('background-image', 'url(img/' + skillType.toLowerCase() + '.png)');
 		container.append('&nbsp;');
-		container.attr('title', getSkillByType(skillType).name);
+		container.attr('title', getSkillByType(skills, skillType).name);
 	}
 
-	function getSkillByType(type) {
-		var skill;
-		skills.forEach(function(el) {
+	function getSkillByType(listSkill, type) {
+		var skill = null;
+		listSkill.forEach(function(el) {
 			if(el.type == type) {
 				skill = el;
 				return;
