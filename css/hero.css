@@ -20,6 +20,18 @@
 	font-weight: bold;
 }
 
+.hero-skills-container {
+	position: relative;
+	width: 25%;
+	height: 110px;
+	margin: 5px auto 0px auto;
+	text-align: center;
+	border: 1px solid #888888;
+	vertical-align: middle;
+	border-radius: 5px;
+	font-weight: bold;
+}
+
 .hero-status-left {
 	position: relative;
 	width: 25%;
